@@ -2,6 +2,9 @@
         <div >
             <p>Новая ссылка</p>
             <p>{{ counter }}</p>
+            <p>Cсылка для перехода</p>
+            <a :href="`${old_link }/`">{{ new_link }}</a>
+            <p>Cсылка для счетчкиа</p>
             <button @click="counter++">{{ new_link }}</button>
         <input type='text' v-model='link' placeholder="Введите ссылку" />
         <button v-on:click="send()">Преобразовать ссылку</button>
@@ -30,8 +33,8 @@
                     },
                 ).then(({ data }) => {
                     console.log(data);
-                this.new_link = data
-
+                this.new_link = data.new;
+                this.old_link = data.old;
                 })
              },
 
